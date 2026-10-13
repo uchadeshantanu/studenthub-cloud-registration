@@ -19,6 +19,7 @@ Important: Amazon RDS manages the database server. You do not need to install ma
 Run these commands on your Ubuntu EC2 instance:
 
 sudo apt update
+
 sudo apt install mysql-client -y
 
 Verify the installation:
