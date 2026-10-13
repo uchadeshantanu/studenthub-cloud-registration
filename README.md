@@ -1,38 +1,37 @@
-# MariaDB Setup and Configuration Guide for Windows
+Amazon RDS MariaDB Setup Guide
 
-This guide explains how to set up MariaDB, create a database, and Create Database User
+This guide explains how to connect to an Amazon RDS MariaDB database from an EC2 instance.
 
-## 1. Installing MariaDB
+1. Create the Database Using Amazon RDS
 
-Installing MariaDB on Ubntu
+   Open the AWS Management Console and go to Amazon RDS.
 
-```shell
-apt update && apt install mariadb-server -y
-```
+   Create a MariaDB database.
 
-## 2. Securing MariaDB
+   Note the database endpoint, port, database name, and master username.
 
-Open the Command Prompt as Administrator and run the following command to secure your installation:
+   Keep the database in the same VPC as your EC2 instance.
 
-```shell
+Important: Amazon RDS manages the database server. You do not need to install mariadb-server on EC2.
 
-mysql_secure_installation
-```
+2. Install the MySQL Client on EC2
 
-Follow the prompts to:
-Set a root password.
-Remove insecure default users and test databases.
-Disable remote root login.
+Run these commands on your Ubuntu EC2 instance:
 
-## 3. Setting Up the Database
+sudo apt update
+sudo apt install mysql-client -y
 
-Open terminal and login to MariaDB:
+Verify the installation:
 
-```bash
+mysql --version
 
-mysql -u root -p
-```
+3. Connect to Amazon RDS
 
+Use the endpoint shown under RDS → Databases → your database → Connectivity & security.
+
+mysql -h <RDS_ENDPOINT> -P 3306 -u <DB_USERNAME> -p
+
+Replace <RDS_ENDPOINT> with your RDS endpoint and <DB_USERNAME> with your database username. 
 Enter the root password when prompted.
 
 Create a new database and user:
