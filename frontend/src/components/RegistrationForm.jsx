@@ -38,7 +38,7 @@ const RegistrationForm = () => {
           type="text"
           placeholder="Name"
           value={name}
-          onChange={(e) => setName(e.target.value.slice(0, 11))}
+          onChange={(e) => setName(e.target.value)}
           className="form-input"
           required
         />
@@ -46,7 +46,7 @@ const RegistrationForm = () => {
           type="email"
           placeholder="Email"
           value={email}
-          onChange={(e) => setEmail(e.target.value.slice(0, 18))}
+          onChange={(e) => setEmail(e.target.value)}
           className="form-input"
           required
         />

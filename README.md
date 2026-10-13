@@ -77,3 +77,20 @@ EXIT;
 
 
 
+## Database Connection URL Reminder
+
+For Spring Boot with Amazon RDS MariaDB, AWS provides the endpoint, but you must add the JDBC prefix yourself.
+
+Format:
+jdbc:mariadb://<RDS_ENDPOINT>:3306/<DATABASE_NAME>
+
+- `jdbc:mariadb://` — add this prefix yourself.
+- `<RDS_ENDPOINT>` — copy from RDS → Connectivity & security.
+- `3306` — database port.
+- `<DATABASE_NAME>` — the database you created.
+
+Use environment variables to keep credentials out of GitHub:
+
+spring.datasource.url=${DB_URL}
+spring.datasource.username=${DB_USERNAME}
+spring.datasource.password=${DB_PASSWORD}
